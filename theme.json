@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "terminal-black",
+          "color": "#000000",
+          "name": "Terminal Black"
+        },
+        {
+          "slug": "terminal-green",
+          "color": "#00ff00",
+          "name": "Terminal Green"
+        }
+      ],
+      "defaultPalette": false,
+      "custom": false
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Courier New, monospace",
+          "slug": "terminal-font",
+          "name": "Terminal Font"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "800px",
+      "wideSize": "1200px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#000000",
+      "text": "#00ff00"
+    },
+    "typography": {
+      "fontFamily": "Courier New, monospace"
+    }
+  },
+  "textdomain": "terminal-theme"
+}

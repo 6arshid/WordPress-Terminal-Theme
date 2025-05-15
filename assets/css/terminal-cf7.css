@@ -1,0 +1,36 @@
+
+/* Terminal Style for Contact Form 7 */
+.wpcf7 {
+  background-color: #000;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  padding: 2rem;
+  border: 1px solid #00ff00;
+}
+
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 textarea {
+  background-color: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  width: 100%;
+  padding: 0.5rem;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 1rem;
+}
+
+.wpcf7 input[type="submit"] {
+  background-color: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+}
+
+.wpcf7 input[type="submit"]:hover {
+  background-color: #00ff00;
+  color: #000;
+  border-color: #00ff00;
+}

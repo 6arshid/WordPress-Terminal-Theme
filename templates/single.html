@@ -1,0 +1,30 @@
+
+<style>
+.comment-body, .comment-author, .comment-content {
+  font-family: 'Courier New', monospace;
+  background-color: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+</style>
+<!-- wp:template-part {"slug":"header","theme":"terminal-theme","tagName":"header"} /-->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="background-color:#000000;color:#00ff00;font-family:'Courier New',monospace;padding:2rem;">
+  <!-- wp:post-title /-->
+  <!-- wp:post-content /-->
+
+  <!-- wp:comments -->
+  <div class="wp-block-comments" style="margin-top: 3rem;">
+    <!-- wp:comments-title /-->
+    <!-- wp:comment-template /-->
+    <!-- wp:comments-pagination /-->
+    <!-- wp:post-comments-form /-->
+  </div>
+  <!-- /wp:comments -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"terminal-theme","tagName":"footer"} /-->

@@ -22,7 +22,7 @@
 
       async function fetchPages() {
         try {
-          const response = await fetch('/wp-json/wp/v2/pages?per_page=100');
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/pages?per_page=100');
           const pages = await response.json();
           pages.forEach(p => {
             const cmd = p.title.rendered.trim().toLowerCase().replace(/\s+/g, '-');
@@ -36,7 +36,7 @@
 
       async function fetchPosts() {
         try {
-          const response = await fetch('/wp-json/wp/v2/posts?per_page=5');
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/posts?per_page=5');
           const posts = await response.json();
           return posts.map(p => ` - <a href="${p.link}" target="_blank">${p.title.rendered}</a>`).join("<br>");
         } catch {
@@ -46,7 +46,7 @@
 
       async function fetchPortfolio() {
         try {
-          const response = await fetch('/wp-json/wp/v2/portfolio?per_page=5');
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/portfolio?per_page=5');
           const items = await response.json();
           return items.map(p => {
             const title = p.title.rendered;
@@ -100,7 +100,7 @@
   
       async function fetchCategories() {
         try {
-          const response = await fetch('/wp-json/wp/v2/categories');
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/categories');
           const cats = await response.json();
           return cats.map(c => ` - ${c.name}`).join("<br>");
         } catch {

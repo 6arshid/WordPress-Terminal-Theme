@@ -1,4 +1,6 @@
 
+//get current website url 
+const currentUrl = window.location.href;
 document.addEventListener("DOMContentLoaded", () => {
   const commandHistory = [];
   let historyIndex = -1;
@@ -8,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchPages() {
     try {
-      const response = await fetch('/wp-json/wp/v2/pages?per_page=100');
+      
+      const response = await fetch(currentUrl+'/wp-json/wp/v2/pages?per_page=100');
       const pages = await response.json();
       pages.forEach(p => {
         const cmd = p.title.rendered.trim().toLowerCase().replace(/\s+/g, '-');
@@ -65,7 +68,7 @@ async function fetchPosts(page = 1) {
 
   async function fetchCategories() {
     try {
-      const response = await fetch('/wp-json/wp/v2/categories');
+      const response = await fetch(currentUrl+'/wp-json/wp/v2/categories');
       const cats = await response.json();
       return cats.map(c => ` - ${c.name}`).join("<br>");
     } catch {

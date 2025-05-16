@@ -51,3 +51,24 @@ add_filter('rest_authentication_errors', function($result) {
     if (!empty($result)) return $result;
     return true;
 });
+function terminal_theme_enqueue_assets() {
+    // Load main style
+    wp_enqueue_style('terminal-style', get_stylesheet_uri());
+
+    // Load global styles so site editor colors actually apply in frontend
+    if (function_exists('wp_get_global_stylesheet')) {
+        $global_styles = wp_get_global_stylesheet();
+        wp_add_inline_style('terminal-style', $global_styles);
+    }
+
+    // Load JS
+    wp_enqueue_script(
+        'terminal-js',
+        get_template_directory_uri() . '/assets/js/terminal.js',
+        [],
+        null,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'terminal_theme_enqueue_assets');
+

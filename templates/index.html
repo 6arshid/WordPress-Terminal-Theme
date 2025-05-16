@@ -2,7 +2,7 @@
 <!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="background-color:#000000;color:#00ff00;font-family:'Courier New',monospace;padding:2rem;">
   <!-- wp:paragraph -->
-  <p><strong>user@terminal:</strong>~$ Type <code>help</code> to list available commands</p>
+  <p><strong>user@terminal:</strong>~$ Type <code>help</code> to list available pages</p>
   <!-- /wp:paragraph -->
 
   <!-- wp:paragraph {"className":"terminal-output"} -->
@@ -13,6 +13,108 @@
   <p><strong>user@terminal:</strong>~$ <input id="terminal-input" type="text" style="background:none;border:none;color:#00ff00;width:90%;" placeholder="Type command..." /></p>
   <!-- /wp:paragraph -->
 
+  <!-- wp:html -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("terminal-input");
+      const output = document.querySelector(".terminal-output");
+
+      const pagesMap = {};
+
+      async function fetchPages() {
+        try {
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/pages?per_page=100');
+          const pages = await response.json();
+          pages.forEach(p => {
+            const cmd = p.title.rendered.trim().toLowerCase().replace(/\s+/g, '-');
+            pagesMap[cmd] = p.link;
+          });
+          return Object.keys(pagesMap).map(p => ` - ${p}`).join("<br>");
+        } catch {
+          return "Error loading pages.";
+        }
+      }
+
+      async function fetchPosts() {
+        try {
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/posts?per_page=5');
+          const posts = await response.json();
+          return posts.map(p => ` - <a href="${p.link}" target="_blank">${p.title.rendered}</a>`).join("<br>");
+        } catch {
+          return "Error loading posts.";
+        }
+      }
+
+      async function fetchPortfolio() {
+        try {
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/portfolio?per_page=5');
+          const items = await response.json();
+          return items.map(p => {
+            const title = p.title.rendered;
+            const link = p.link;
+            const excerpt = p.excerpt?.rendered || "";
+            return ` - <a href="${link}" target="_blank">${title}</a><br>${excerpt}`;
+          }).join("<br>");
+        } catch {
+          return "Error loading portfolio.";
+        }
+      }
+
+      input.addEventListener("keydown", async function(event) {
+        if (event.key === "Enter") {
+          const commandRaw = input.value.trim();
+          const command = commandRaw.toLowerCase().replace(/\s+/g, '-');
+          let response = "";
+
+          if (command === "help") {
+            const pagesList = await fetchPages();
+            response = `Available commands:<br> - help<br> - clear<br> - blog<br> - portfolio<br> - categories<br>${pagesList}<br> - blog<br> - portfolio<br> - clear`;
+          } else if (command === "clear") {
+            output.innerHTML = "";
+            input.value = "";
+            return;
+          } else if (command === "blog") {
+            response = await fetchPosts();
+          } else if (command === "portfolio") {
+            response = await fetchPortfolio();
+          } else if (pagesMap[command]) {
+            response = `Open page: <a href="${pagesMap[command]}" target="_blank">${command}</a>`;
+          } else if (command.startsWith("go ")) {
+            const dest = command.slice(3);
+            if (pagesMap[dest]) {
+              window.location.href = pagesMap[dest];
+              return;
+            } else {
+              response = `No page found for: ${dest}`;
+            }
+          } else {
+            response = `Command not found: ${commandRaw}`;
+          }
+
+          output.innerHTML += `<br><strong>user@terminal:</strong>~$ ${commandRaw}<br>${response}`;
+          input.value = "";
+        }
+      });
+
+      fetchPages();
+    });
+  
+      async function fetchCategories() {
+        try {
+          const response = await fetch(currentUrl+'/wp-json/wp/v2/categories');
+          const cats = await response.json();
+          return cats.map(c => ` - ${c.name}`).join("<br>");
+        } catch {
+          return "Error loading categories.";
+        }
+      }
+
+      // Add handler
+      if (command === "categories") {
+        response = await fetchCategories();
+      } else
+</script>
+  <!-- /wp:html -->
 </div>
 <!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

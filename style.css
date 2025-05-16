@@ -35,10 +35,11 @@ img {
 /* ================================
    Terminal Header & Search (Styled)
    ================================ */
+
 .terminal-header {
-  background-color: var(--wp--preset--color--background, #000000);
-  color: var(--wp--preset--color--text, #00ff00);
-  font-family: var(--wp--preset--font-family--terminal-font, 'Courier New', monospace);
+  background-color: #000000;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +50,7 @@ img {
 
 /* Site title link */
 .wp-block-site-title a {
-  color: var(--wp--preset--color--text, #00ff00);
+  color: #00ff00;
   font-weight: bold;
   text-decoration: none;
   font-size: 1.25rem;
@@ -57,40 +58,40 @@ img {
 }
 .wp-block-site-title a:hover {
   text-decoration: underline;
-  color: var(--wp--preset--color--terminal-green, #00ff66);
+  color: #00ff66;
 }
 
 /* Search input field */
 .wp-block-search__input {
-  background-color: var(--wp--preset--color--background, #000000);
+  background-color: #000000;
   border: 1px solid #444;
-  color: var(--wp--preset--color--text, #00ff00);
+  color: #00ff00;
   padding: 0.4rem 0.6rem;
-  font-family: var(--wp--preset--font-family--terminal-font, 'Courier New', monospace);
+  font-family: 'Courier New', monospace;
   font-size: 0.9rem;
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s;
 }
 .wp-block-search__input:focus {
   outline: none;
-  border-color: var(--wp--preset--color--terminal-green, #00ff00);
-  box-shadow: 0 0 5px var(--wp--preset--color--terminal-green, #00ff00);
+  border-color: #00ff00;
+  box-shadow: 0 0 5px #00ff00;
 }
 
 /* Search button */
 .wp-block-search__button {
-  background-color: var(--wp--preset--color--background, #000000);
-  color: var(--wp--preset--color--text, #00ff00);
+  background-color: #000000;
+  color: #00ff00;
   border: 1px solid #444;
   padding: 0.4rem 0.8rem;
-  font-family: var(--wp--preset--font-family--terminal-font, 'Courier New', monospace);
+  font-family: 'Courier New', monospace;
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 .wp-block-search__button:hover {
-  background-color: var(--wp--preset--color--text, #00ff00);
-  color: var(--wp--preset--color--background, #000000);
-  border-color: var(--wp--preset--color--text, #00ff00);
+  background-color: #00ff00;
+  color: #000000;
+  border-color: #00ff00;
 }
 
 /* Responsive: Stack on small screens */
@@ -114,16 +115,14 @@ img {
     flex-shrink: 0;
   }
 }
-
 /* ========== Terminal Theme Colors ========== */
 
-
 body {
-  background-color: var(--wp--preset--color--background, #000000);
-  color: var(--wp--preset--color--text, #00ff00);
-    font-family: 'Courier New', monospace;
-
+  background-color: #000000;
+  color: #cccccc;
+  font-family: 'Courier New', monospace;
 }
+
 /* Terminal container */
 .terminal-output {
   white-space: pre-wrap;
@@ -179,11 +178,4 @@ a {
 a:hover {
   text-decoration: underline;
   color: #fff176;
-}
-.has-background {
-  background-color: var(--wp--preset--color--background, #000000) !important;
-}
-
-.has-text-color {
-  color: var(--wp--preset--color--text, #00ff00) !important;
 }

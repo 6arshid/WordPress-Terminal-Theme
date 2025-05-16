@@ -33,8 +33,8 @@
   },
   "styles": {
     "color": {
- "background": "var(--wp--preset--color--terminal-black)",
-    "text": "var(--wp--preset--color--terminal-green)"
+      "background": "#000000",
+      "text": "#00ff00"
     },
     "typography": {
       "fontFamily": "Courier New, monospace"

@@ -72,7 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch(currentUrl + '/wp-json/wp/v2/categories');
       const cats = await response.json();
-      return cats.map(c => ` - ${c.name}`).join("<br>");
+      return cats.map(c => ` - <a href="/category/${c.slug}" target="_blank">${c.name}</a>`).join("<br>");
+
     } catch {
       return "Error loading categories.";
     }

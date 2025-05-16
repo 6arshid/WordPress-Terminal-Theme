@@ -1,6 +1,6 @@
-
 //get current website url 
 const currentUrl = window.location.href;
+
 document.addEventListener("DOMContentLoaded", () => {
   const commandHistory = [];
   let historyIndex = -1;
@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchPages() {
     try {
-      
-      const response = await fetch(currentUrl+'/wp-json/wp/v2/pages?per_page=100');
+      const response = await fetch(currentUrl + '/wp-json/wp/v2/pages?per_page=100');
       const pages = await response.json();
       pages.forEach(p => {
         const cmd = p.title.rendered.trim().toLowerCase().replace(/\s+/g, '-');
@@ -24,12 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let blogPage = 1;
-let blogTotalPages = 1;
+  let blogTotalPages = 1;
 
-async function fetchPosts(page = 1) {
+  async function fetchPosts(page = 1) {
     try {
       const response = await fetch(`/wp-json/wp/v2/posts?per_page=5&page=${page}`);
-    if (!response.ok) throw new Error("Network response was not ok");
+      if (!response.ok) throw new Error("Network response was not ok");
       const posts = await response.json();
       blogPage = page;
       blogTotalPages = parseInt(response.headers.get('X-WP-TotalPages')) || 1;
@@ -38,10 +37,13 @@ async function fetchPosts(page = 1) {
         `<br><br>Page ${blogPage} of ${blogTotalPages}<br>` +
         (blogPage > 1 ? `Type <code>blog prev</code> ` : '') +
         (blogPage < blogTotalPages ? `Type <code>blog next</code>` : '');
-    } catch {
+    } catch (err) {
       return "Error loading posts: " + err.message;
     }
   }
+
+  let portfolioPage = 1;
+  let portfolioTotalPages = 1;
 
   async function fetchPortfolio(page = 1) {
     try {
@@ -68,12 +70,33 @@ async function fetchPosts(page = 1) {
 
   async function fetchCategories() {
     try {
-      const response = await fetch(currentUrl+'/wp-json/wp/v2/categories');
+      const response = await fetch(currentUrl + '/wp-json/wp/v2/categories');
       const cats = await response.json();
       return cats.map(c => ` - ${c.name}`).join("<br>");
     } catch {
       return "Error loading categories.";
     }
+  }
+
+  // 🔄 Loading Animation
+  let loadingInterval;
+  function showLoading() {
+    const loadingFrames = [".", ". .", ". . .", ". .", "."];
+    let index = 0;
+    const loadingSpan = document.createElement("span");
+    loadingSpan.id = "loading";
+    output.appendChild(loadingSpan);
+
+    loadingInterval = setInterval(() => {
+      loadingSpan.textContent = "Loading " + loadingFrames[index];
+      index = (index + 1) % loadingFrames.length;
+    }, 300);
+  }
+
+  function hideLoading() {
+    clearInterval(loadingInterval);
+    const loadingSpan = document.getElementById("loading");
+    if (loadingSpan) loadingSpan.remove();
   }
 
   input?.addEventListener("keydown", async function (event) {
@@ -101,55 +124,63 @@ async function fetchPosts(page = 1) {
       const normalizedCommand = command.replace(/\s+/g, '-');
       let response = "";
 
-      if (normalizedCommand === "help") {
-        const pagesList = await fetchPages();
-        response = `Available commands:<br> - help<br> - clear<br> - blog<br> - portfolio<br> - categories<br>${pagesList}`;
-      } else if (normalizedCommand === "clear") {
-        output.innerHTML = "";
-        input.value = "";
-        return;
-      } else if (normalizedCommand === "blog") {
-        response = await fetchPosts(1);
-      } else if (normalizedCommand === "blog-next") {
-        const nextPage = blogPage + 1;
-        if (nextPage <= blogTotalPages) {
-          response = await fetchPosts(nextPage);
-        } else {
-          response = "You're already on the last page.";
-        }
-      } else if (normalizedCommand === "blog-prev") {
-        const prevPage = blogPage - 1;
-        if (prevPage >= 1) {
-          response = await fetchPosts(prevPage);
-        } else {
-          response = "You're already on the first page.";
-        }
-      } else if (normalizedCommand.startsWith("blog-page-")) {
-        const pageNum = parseInt(normalizedCommand.replace("blog-page-", ""));
-        if (!isNaN(pageNum)) {
-          response = await fetchPosts(pageNum);
-        } else {
-          response = "Invalid blog page number.";
-        }
+      showLoading();
 
-      } else if (normalizedCommand === "portfolio") {
-        response = await fetchPortfolio(1);
-      } else if (normalizedCommand === "categories") {
-        response = await fetchCategories();
-      } else if (pagesMap[normalizedCommand]) {
-        let pageHtml = "";
-        try {
-          pageHtml = await fetch(pagesMap[normalizedCommand]).then(res => res.text());
-        } catch (e) {
-          pageHtml = "<p>Error loading page.</p>";
+      try {
+        if (normalizedCommand === "help") {
+          const pagesList = await fetchPages();
+          response = `Available commands:<br> - help<br> - clear<br> - blog<br> - portfolio<br> - categories<br>${pagesList}`;
+        } else if (normalizedCommand === "clear") {
+          output.innerHTML = "";
+          input.value = "";
+          hideLoading();
+          return;
+        } else if (normalizedCommand === "blog") {
+          response = await fetchPosts(1);
+        } else if (normalizedCommand === "blog-next") {
+          const nextPage = blogPage + 1;
+          if (nextPage <= blogTotalPages) {
+            response = await fetchPosts(nextPage);
+          } else {
+            response = "You're already on the last page.";
+          }
+        } else if (normalizedCommand === "blog-prev") {
+          const prevPage = blogPage - 1;
+          if (prevPage >= 1) {
+            response = await fetchPosts(prevPage);
+          } else {
+            response = "You're already on the first page.";
+          }
+        } else if (normalizedCommand.startsWith("blog-page-")) {
+          const pageNum = parseInt(normalizedCommand.replace("blog-page-", ""));
+          if (!isNaN(pageNum)) {
+            response = await fetchPosts(pageNum);
+          } else {
+            response = "Invalid blog page number.";
+          }
+        } else if (normalizedCommand === "portfolio") {
+          response = await fetchPortfolio(1);
+        } else if (normalizedCommand === "categories") {
+          response = await fetchCategories();
+        } else if (pagesMap[normalizedCommand]) {
+          let pageHtml = "";
+          try {
+            pageHtml = await fetch(pagesMap[normalizedCommand]).then(res => res.text());
+          } catch (e) {
+            pageHtml = "<p>Error loading page.</p>";
+          }
+          let pageDoc = new DOMParser().parseFromString(pageHtml, "text/html");
+          const content = pageDoc.querySelector(".entry-content, .wp-block-post-content")?.innerHTML || "<p>No content found.</p>";
+          const title = pageDoc.querySelector("h1")?.textContent || command;
+          response = `<strong>${title}</strong><br>${content}`;
+        } else {
+          response = `Command not found: ${commandRaw}`;
         }
-        let pageDoc = new DOMParser().parseFromString(pageHtml, "text/html");
-        const content = pageDoc.querySelector(".entry-content, .wp-block-post-content")?.innerHTML || "<p>No content found.</p>";
-        const title = pageDoc.querySelector("h1")?.textContent || command;
-        response = `<strong>${title}</strong><br>${content}`;
-      } else {
-        response = `Command not found: ${commandRaw}`;
+      } catch (err) {
+        response = "Error: " + err.message;
       }
+
+      hideLoading();
 
       const fullResponse = `<br><strong>user@terminal:</strong>~$ ${commandRaw}<br>${response}`;
       const tempDiv = document.createElement("div");
@@ -195,4 +226,3 @@ async function fetchPosts(page = 1) {
 
   fetchPages();
 });
-

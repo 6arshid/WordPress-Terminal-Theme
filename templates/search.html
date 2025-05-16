@@ -2,17 +2,26 @@
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="background-color:#000000;color:#00ff00;font-family:'Courier New',monospace;padding:2rem;">
-  <!-- wp:search {"label":"Search","showLabel":false} /-->
 
-  <!-- wp:query {"queryId":1,"query":{"search":"","perPage":10}} -->
+  <!-- Search Form -->
+  <!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search"} /-->
+
+  <!-- Search Results -->
+  <!-- wp:query -->
   <div class="wp-block-query">
     <!-- wp:post-template -->
       <!-- wp:post-title {"isLink":true} /-->
+      <!-- wp:post-excerpt /-->
     <!-- /wp:post-template -->
 
-    <!-- wp:query-pagination /-->
+    <!-- wp:query-pagination -->
+      <!-- wp:query-pagination-previous {"label":"Previous"} /-->
+      <!-- wp:query-pagination-numbers /-->
+      <!-- wp:query-pagination-next {"label":"Next"} /-->
+    <!-- /wp:query-pagination -->
   </div>
   <!-- /wp:query -->
+
 </div>
 <!-- /wp:group -->
 

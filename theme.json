@@ -15,7 +15,7 @@
         }
       ],
       "defaultPalette": false,
-      "custom": false
+      "custom": true
     },
     "typography": {
       "fontFamilies": [

@@ -1,0 +1,92 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: terminal-theme 1.0\n"
+"Language: en_US\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Portfolio Item"
+msgstr "Portfolio Item"
+
+msgid "FSE"
+msgstr "Full Site Editing"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Go"
+msgstr "Go"
+
+msgid "Type <code>help</code> to list available commands"
+msgstr "Type <code>help</code> to list available commands"
+
+msgid "Type command..."
+msgstr "Type command..."
+
+msgid "Command Builder"
+msgstr "Command Builder"
+
+msgid "Add custom terminal commands using ACF, theme options, or a future plugin integration."
+msgstr "Add custom terminal commands using ACF, theme options, or a future plugin integration."
+
+msgid "Command Name:"
+msgstr "Command Name:"
+
+msgid "Command Response (HTML/Text):"
+msgstr "Command Response (HTML/Text):"
+
+msgid "This form is a mockup — connect it to backend/plugin for saving."
+msgstr "This form is a mockup — connect it to backend/plugin for saving."
+
+msgid "Save Command"
+msgstr "Save Command"
+
+msgid "Error loading pages."
+msgstr "Error loading pages."
+
+msgid "Network response was not ok"
+msgstr "Network response was not ok"
+
+msgid "Error loading posts:"
+msgstr "Error loading posts:"
+
+msgid "Error loading portfolio."
+msgstr "Error loading portfolio."
+
+msgid "Error loading categories."
+msgstr "Error loading categories."
+
+msgid "Loading"
+msgstr "Loading"
+
+msgid "Available commands:"
+msgstr "Available commands:"
+
+msgid "You're already on the last page."
+msgstr "You're already on the last page."
+
+msgid "You're already on the first page."
+msgstr "You're already on the first page."
+
+msgid "Invalid blog page number."
+msgstr "Invalid blog page number."
+
+msgid "Error loading page."
+msgstr "Error loading page."
+
+msgid "No content found."
+msgstr "No content found."
+
+msgid "Command not found: %s"
+msgstr "Command not found: %s"
+
+msgid "Error:"
+msgstr "Error:"
+
+msgid "Page %1$d of %2$d"
+msgstr "Page %1$d of %2$d"
+
+msgid "Type %s"
+msgstr "Type %s"

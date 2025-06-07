@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: terminal-theme 1.0\n"
+"Language: fa_IR\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Portfolio"
+msgstr "نمونه کارها"
+
+msgid "Portfolio Item"
+msgstr "آیتم نمونه کار"
+
+msgid "Built with WordPress by"
+msgstr "ساخته شده با وردپرس توسط"
+
+msgid "Command Builder"
+msgstr "سازنده فرمان"
+
+msgid "Add custom terminal commands using ACF, theme options, or a future plugin integration."
+msgstr "فرمان‌های ترمینال سفارشی را با استفاده از ACF، گزینه‌های قالب یا افزونه آینده اضافه کنید."
+
+msgid "Command Name:"
+msgstr "نام فرمان:"
+
+msgid "Command Response (HTML/Text):"
+msgstr "پاسخ فرمان (متن/HTML):"
+
+msgid "This form is a mockup — connect it to backend/plugin for saving."
+msgstr "این فرم نمونه است — برای ذخیره‌سازی به افزونه یا بخش پشتی متصل کنید."
+
+msgid "Save Command"
+msgstr "ذخیره فرمان"
+
+msgid "Search"
+msgstr "جستجو"
+
+msgid "Go"
+msgstr "برو"
+
+msgid "Previous"
+msgstr "قبلی"
+
+msgid "Next"
+msgstr "بعدی"
+
+msgid "Type"
+msgstr "بنویسید"
+
+msgid "to list available commands"
+msgstr "برای نمایش دستورات موجود"
+
+msgid "Type command..."
+msgstr "فرمان را بنویسید..."
+
+msgid "Loading"
+msgstr "در حال بارگذاری"
+
+msgid "Available commands:"
+msgstr "دستورات موجود:"
+
+msgid "You're already on the last page."
+msgstr "شما در آخرین صفحه هستید."
+
+msgid "You're already on the first page."
+msgstr "شما در اولین صفحه هستید."
+
+msgid "Invalid blog page number."
+msgstr "شماره صفحه وبلاگ نامعتبر است."
+
+msgid "Error loading pages."
+msgstr "خطا در بارگذاری صفحات."
+
+msgid "Network response was not ok"
+msgstr "پاسخ شبکه مناسب نیست"
+
+msgid "Error loading posts:"
+msgstr "خطا در بارگذاری نوشته‌ها:"
+
+msgid "Error loading portfolio."
+msgstr "خطا در بارگذاری نمونه‌کارها."
+
+msgid "Error loading categories."
+msgstr "خطا در بارگذاری دسته‌بندی‌ها."
+
+msgid "Error loading page."
+msgstr "خطا در بارگذاری صفحه."
+
+msgid "No content found."
+msgstr "محتوایی یافت نشد."
+
+msgid "Command not found:"
+msgstr "فرمان یافت نشد:"
+
+msgid "Error:"
+msgstr "خطا:"

@@ -7,6 +7,7 @@ A minimal, terminal-style WordPress theme designed for developers, hackers, and 
 - **Terminal Look & Feel**: Styled to resemble a terminal window with a dark, hacker-like aesthetic.
 - **Minimal and Clean**: Lightweight design focused on readability and performance.
 - **Responsive Design**: Fully responsive layout that works great on all devices.
+- **FSE (Full Site Editing) Support**: Built as a block theme for WordPress's Full Site Editing system.
 - **Custom Menu Support**: Add your own menu items through the WordPress dashboard.
 - **Widget Support**: Footer and sidebar widgets supported.
 - **Syntax Highlighting**: Built-in support for code snippets using Prism.js or similar libraries.
@@ -52,6 +53,18 @@ Select **Terminal Theme** and click **Activate**.
 - Use the Customizer to update site title, tagline, and menu.
 - Add your own CSS in `style.css` or via WordPress Customizer.
 - Customize the layout via `index.php`, `header.php`, `footer.php`, and other template files.
+
+## Localization
+
+If you want to translate the theme, use WordPress's `wp i18n` command to generate
+or update the POT file. This extracts strings from PHP, HTML, and JavaScript files:
+
+```bash
+wp i18n make-pot . languages/terminal-theme.pot \
+  --include="templates/**,parts/**,assets/js/**"
+```
+
+Add your translations in the `languages` folder using standard `.po` files.
 
 ---
 

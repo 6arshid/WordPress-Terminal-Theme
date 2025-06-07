@@ -13,8 +13,8 @@ add_action('after_setup_theme', 'terminal_theme_setup');
 add_action('init', function () {
     register_post_type('portfolio', [
         'labels' => [
-            'name' => __('Portfolio'),
-            'singular_name' => __('Portfolio Item'),
+            'name' => __('Portfolio', 'terminal-theme'),
+            'singular_name' => __('Portfolio Item', 'terminal-theme'),
         ],
         'public' => true,
         'has_archive' => true,
@@ -37,16 +37,11 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('terminal-js', get_template_directory_uri() . '/assets/js/terminal.js', [], '1.0', true);
+    wp_enqueue_script('terminal-js', get_template_directory_uri() . '/assets/js/terminal.js', ['wp-i18n'], '1.0', true);
+    wp_set_script_translations('terminal-js', 'terminal-theme', get_template_directory() . '/languages');
 });
 
 
-add_filter('script_loader_tag', function($tag, $handle, $src) {
-    if ($handle === 'terminal-js') {
-        return '<script type="module" src="' . esc_url($src) . '"></script>';
-    }
-    return $tag;
-}, 10, 3);
 add_filter('rest_authentication_errors', function($result) {
     if (!empty($result)) return $result;
     return true;

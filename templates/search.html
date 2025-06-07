@@ -4,7 +4,7 @@
 <div class="wp-block-group" style="background-color:#000000;color:#00ff00;font-family:'Courier New',monospace;padding:2rem;">
 
   <!-- Search Form -->
-  <!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search"} /-->
+  <?php echo do_blocks( '<!-- wp:search {"label":"' . esc_attr__( 'Search', 'terminal-theme' ) . '","showLabel":false,"buttonText":"' . esc_html__( 'Search', 'terminal-theme' ) . '"} /-->' ); ?>
 
   <!-- Search Results -->
   <!-- wp:query -->
@@ -15,9 +15,9 @@
     <!-- /wp:post-template -->
 
     <!-- wp:query-pagination -->
-      <!-- wp:query-pagination-previous {"label":"Previous"} /-->
+      <?php echo do_blocks( '<!-- wp:query-pagination-previous {"label":"' . esc_html__( 'Previous', 'terminal-theme' ) . '"} /-->' ); ?>
       <!-- wp:query-pagination-numbers /-->
-      <!-- wp:query-pagination-next {"label":"Next"} /-->
+      <?php echo do_blocks( '<!-- wp:query-pagination-next {"label":"' . esc_html__( 'Next', 'terminal-theme' ) . '"} /-->' ); ?>
     <!-- /wp:query-pagination -->
   </div>
   <!-- /wp:query -->

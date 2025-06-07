@@ -1,18 +1,18 @@
 <!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="font-family:'Courier New',monospace;color:#00ff00;">
   <!-- wp:heading -->
-  <h2>Command Builder</h2>
+  <h2><?php echo esc_html__("Command Builder", "terminal-theme"); ?></h2>
   <!-- /wp:heading -->
 
   <!-- wp:paragraph -->
-  <p>Add custom terminal commands using ACF, theme options, or a future plugin integration.</p>
+  <p><?php echo esc_html__("Add custom terminal commands using ACF, theme options, or a future plugin integration.", "terminal-theme"); ?></p>
   <!-- /wp:paragraph -->
 
   <!-- wp:html -->
   <div style="border:1px solid #00ff00;padding:1rem;margin-top:1rem;">
-    <label>Command Name:<br><input type="text" id="cmd-name" style="width:100%; background:black; color:#00ff00; border:1px solid #00ff00;" /></label><br><br>
-    <label>Command Response (HTML/Text):<br><textarea id="cmd-response" style="width:100%;height:100px;background:black;color:#00ff00;border:1px solid #00ff00;"></textarea></label><br><br>
-    <button onclick="alert('This form is a mockup — connect it to backend/plugin for saving.')" style="background:black;color:#00ff00;border:1px solid #00ff00;padding:0.5rem;">Save Command</button>
+    <label><?php echo esc_html__("Command Name:", "terminal-theme"); ?><br><input type="text" id="cmd-name" style="width:100%; background:black; color:#00ff00; border:1px solid #00ff00;" /></label><br><br>
+    <label><?php echo esc_html__("Command Response (HTML/Text):", "terminal-theme"); ?><br><textarea id="cmd-response" style="width:100%;height:100px;background:black;color:#00ff00;border:1px solid #00ff00;"></textarea></label><br><br>
+    <button onclick="alert('<?php echo esc_js( __( 'This form is a mockup — connect it to backend/plugin for saving.', 'terminal-theme' ) ); ?>')" style="background:black;color:#00ff00;border:1px solid #00ff00;padding:0.5rem;"><?php echo esc_html__("Save Command", "terminal-theme"); ?></button>
   </div>
   <!-- /wp:html -->
 </div>

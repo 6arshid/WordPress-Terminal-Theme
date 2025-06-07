@@ -1,4 +1,6 @@
-//get current website url 
+import { __, sprintf } from '@wordpress/i18n';
+
+//get current website url
 const currentUrl = window.location.href;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return Object.keys(pagesMap).map(p => ` - ${p}`).join("<br>");
     } catch {
-      return "Error loading pages.";
+      return __( 'Error loading pages.', 'terminal-theme' );
     }
   }
 
@@ -28,17 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchPosts(page = 1) {
     try {
       const response = await fetch(`/wp-json/wp/v2/posts?per_page=5&page=${page}`);
-      if (!response.ok) throw new Error("Network response was not ok");
+      if (!response.ok) throw new Error( __( 'Network response was not ok', 'terminal-theme' ) );
       const posts = await response.json();
       blogPage = page;
       blogTotalPages = parseInt(response.headers.get('X-WP-TotalPages')) || 1;
 
       return posts.map(p => ` - <a href="${p.link}" target="_blank">${p.title.rendered}</a>`).join("<br>") +
-        `<br><br>Page ${blogPage} of ${blogTotalPages}<br>` +
-        (blogPage > 1 ? `Type <code>blog prev</code> ` : '') +
-        (blogPage < blogTotalPages ? `Type <code>blog next</code>` : '');
+        `<br><br>${sprintf( __( 'Page %1$d of %2$d', 'terminal-theme' ), blogPage, blogTotalPages )}<br>` +
+        (blogPage > 1 ? sprintf( __( 'Type %s', 'terminal-theme' ), '<code>blog prev</code> ' ) : '') +
+        (blogPage < blogTotalPages ? sprintf( __( 'Type %s', 'terminal-theme' ), '<code>blog next</code>' ) : '');
     } catch (err) {
-      return "Error loading posts: " + err.message;
+      return __( 'Error loading posts:', 'terminal-theme' ) + ' ' + err.message;
     }
   }
 
@@ -60,11 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <a href="${pfLink}" target="_blank"><strong>${pfTitle}</strong></a><br>${pfDescription}
         </div>`;
       }).join("<br>") +
-        `<br><br>Page ${portfolioPage} of ${portfolioTotalPages}<br>` +
-        (portfolioPage > 1 ? `Type <code>portfolio prev</code> ` : '') +
-        (portfolioPage < portfolioTotalPages ? `Type <code>portfolio next</code>` : '');
+        `<br><br>${sprintf( __( 'Page %1$d of %2$d', 'terminal-theme' ), portfolioPage, portfolioTotalPages )}<br>` +
+        (portfolioPage > 1 ? sprintf( __( 'Type %s', 'terminal-theme' ), '<code>portfolio prev</code> ' ) : '') +
+        (portfolioPage < portfolioTotalPages ? sprintf( __( 'Type %s', 'terminal-theme' ), '<code>portfolio next</code>' ) : '');
     } catch {
-      return "Error loading portfolio.";
+      return __( 'Error loading portfolio.', 'terminal-theme' );
     }
   }
 
@@ -75,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return cats.map(c => ` - <a href="/category/${c.slug}" target="_blank">${c.name}</a>`).join("<br>");
 
     } catch {
-      return "Error loading categories.";
+      return __( 'Error loading categories.', 'terminal-theme' );
     }
   }
 
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     output.appendChild(loadingSpan);
 
     loadingInterval = setInterval(() => {
-      loadingSpan.textContent = "Loading " + loadingFrames[index];
+      loadingSpan.textContent = __( 'Loading', 'terminal-theme' ) + ' ' + loadingFrames[index];
       index = (index + 1) % loadingFrames.length;
     }, 300);
   }
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         if (normalizedCommand === "help") {
           const pagesList = await fetchPages();
-          response = `Available commands:<br> - help<br> - clear<br> - blog<br> - portfolio<br> - categories<br>${pagesList}`;
+          response = `${ __( 'Available commands:', 'terminal-theme' ) }<br> - help<br> - clear<br> - blog<br> - portfolio<br> - categories<br>${pagesList}`;
         } else if (normalizedCommand === "clear") {
           output.innerHTML = "";
           input.value = "";
@@ -143,21 +145,21 @@ document.addEventListener("DOMContentLoaded", () => {
           if (nextPage <= blogTotalPages) {
             response = await fetchPosts(nextPage);
           } else {
-            response = "You're already on the last page.";
+            response = __( "You're already on the last page.", 'terminal-theme' );
           }
         } else if (normalizedCommand === "blog-prev") {
           const prevPage = blogPage - 1;
           if (prevPage >= 1) {
             response = await fetchPosts(prevPage);
           } else {
-            response = "You're already on the first page.";
+            response = __( "You're already on the first page.", 'terminal-theme' );
           }
         } else if (normalizedCommand.startsWith("blog-page-")) {
           const pageNum = parseInt(normalizedCommand.replace("blog-page-", ""));
           if (!isNaN(pageNum)) {
             response = await fetchPosts(pageNum);
           } else {
-            response = "Invalid blog page number.";
+            response = __( 'Invalid blog page number.', 'terminal-theme' );
           }
         } else if (normalizedCommand === "portfolio") {
           response = await fetchPortfolio(1);
@@ -168,17 +170,17 @@ document.addEventListener("DOMContentLoaded", () => {
           try {
             pageHtml = await fetch(pagesMap[normalizedCommand]).then(res => res.text());
           } catch (e) {
-            pageHtml = "<p>Error loading page.</p>";
+            pageHtml = `<p>${ __( 'Error loading page.', 'terminal-theme' ) }</p>`;
           }
           let pageDoc = new DOMParser().parseFromString(pageHtml, "text/html");
-          const content = pageDoc.querySelector(".entry-content, .wp-block-post-content")?.innerHTML || "<p>No content found.</p>";
+          const content = pageDoc.querySelector(".entry-content, .wp-block-post-content")?.innerHTML || `<p>${ __( 'No content found.', 'terminal-theme' ) }</p>`;
           const title = pageDoc.querySelector("h1")?.textContent || command;
           response = `<strong>${title}</strong><br>${content}`;
         } else {
-          response = `Command not found: ${commandRaw}`;
+          response = sprintf( __( 'Command not found: %s', 'terminal-theme' ), commandRaw );
         }
       } catch (err) {
-        response = "Error: " + err.message;
+        response = __( 'Error:', 'terminal-theme' ) + ' ' + err.message;
       }
 
       hideLoading();

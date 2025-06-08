@@ -15,8 +15,8 @@ Tags: full-site-editing, block-theme, dark-mode, green-text, terminal
 */
 
 :root {
-  --whitestudioteam-bg: #000000;
-  --whitestudioteam-text: #00ff00;
+  --whitestudioteam-bg: var(--wp--style--color--background);
+  --whitestudioteam-text: var(--wp--style--color--text);
 }
 
 /* Terminal comment styling */
@@ -145,7 +145,7 @@ img {
 
 body {
   background-color: var(--whitestudioteam-bg);
-  color: #cccccc;
+  color: var(--whitestudioteam-text);
   font-family: 'Courier New', monospace;
 }
 

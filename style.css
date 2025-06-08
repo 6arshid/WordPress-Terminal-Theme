@@ -14,11 +14,6 @@ Text Domain: terminal-theme
 Tags: full-site-editing, block-theme, dark-mode, green-text, terminal
 */
 
-:root {
-  --whitestudioteam-bg: #000000;
-  --whitestudioteam-text: #00ff00;
-}
-
 /* Terminal comment styling */
 .wp-block-comments,
 .comment-body,
@@ -144,8 +139,10 @@ img {
 /* ========== Terminal Theme Colors ========== */
 
 body {
+  --whitestudioteam-bg: var(--wp--style--color--background);
+  --whitestudioteam-text: var(--wp--style--color--text);
   background-color: var(--whitestudioteam-bg);
-  color: #cccccc;
+  color: var(--whitestudioteam-text);
   font-family: 'Courier New', monospace;
 }
 
@@ -192,7 +189,7 @@ body {
 .terminal-output {
   white-space: pre-wrap;
   font-family: 'Courier New', monospace;
-  color: #ccc;
+  color: var(--whitestudioteam-text);
 }
 
 /* Prompt */

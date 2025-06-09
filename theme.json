@@ -12,11 +12,19 @@
           "slug": "terminal-green",
           "color": "#00ff00",
           "name": "Terminal Green"
+        },
+        {
+          "slug": "terminal-yellow",
+          "color": "#f5c542",
+          "name": "Terminal Yellow"
         }
       ],
-      "defaultPalette": false,
-      "custom": false
+      "defaultPalette": true,
+      "custom": true,
+      "customGradient": true,
+      "customDuotone": true
     },
+    "appearanceTools": true,
     "typography": {
       "fontFamilies": [
         {
@@ -31,11 +39,12 @@
       "wideSize": "1200px"
     }
   },
-  "styles": {
-    "color": {
-      "background": "#000000",
-      "text": "#00ff00"
-    },
+    "styles": {
+      "color": {
+        "background": "#000000",
+        "text": "#00ff00",
+        "link": "#f5c542"
+      },
     "typography": {
       "fontFamily": "Courier New, monospace"
     }

@@ -1,13 +1,13 @@
 <?php
-function terminal_theme_enqueue_styles() {
+function whitestudioteam_terminal_theme_enqueue_styles() {
     wp_enqueue_style('terminal-style', get_stylesheet_directory_uri() . '/style.css', [], wp_get_theme()->get('Version'));
 }
-add_action('wp_enqueue_scripts', 'terminal_theme_enqueue_styles');
-function terminal_theme_setup() {
+add_action('wp_enqueue_scripts', 'whitestudioteam_terminal_theme_enqueue_styles');
+function whitestudioteam_terminal_theme_setup() {
     add_theme_support('editor-styles');
     add_editor_style('style.css');
 }
-add_action('after_setup_theme', 'terminal_theme_setup');
+add_action('after_setup_theme', 'whitestudioteam_terminal_theme_setup');
 
 
 add_action('init', function () {

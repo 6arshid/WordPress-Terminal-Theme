@@ -14,25 +14,17 @@ Text Domain: terminal-theme
 Tags: full-site-editing, block-theme, dark-mode, green-text, terminal
 */
 
-:root {
-  --whitestudioteam-bg: #000000;
-  --whitestudioteam-text: #00ff00;
-}
-
 /* Terminal comment styling */
 .wp-block-comments,
 .comment-body,
 .comment-content,
 .comment-author {
   font-family: 'Courier New', monospace;
-  background: var(--whitestudioteam-bg);
-  color: var(--whitestudioteam-text);
-  border: 1px solid var(--whitestudioteam-text);
+  background: #000;
+  color: #00ff00;
+  border: 1px solid #00ff00;
   padding: 1rem;
   margin-top: 1rem;
-}
-.wp-block-comments {
-  margin-top: 3rem;
 }
 
 img {
@@ -40,31 +32,13 @@ img {
   height: auto;
   display: block;
 }
-
-.whitestudioteam-grayscale-img {
-  filter: grayscale(100%) contrast(120%);
-  transition: all 0.3s ease;
-}
-.whitestudioteam-grayscale-img:hover {
-  filter: none;
-  box-shadow: 0 0 10px var(--whitestudioteam-text);
-}
-
-.whitestudioteam-page img {
-  filter: grayscale(100%) contrast(120%);
-  transition: all 0.3s ease;
-}
-.whitestudioteam-page img:hover {
-  filter: none;
-  box-shadow: 0 0 10px var(--whitestudioteam-text);
-}
 /* ================================
    Terminal Header & Search (Styled)
    ================================ */
 
 .terminal-header {
-  background-color: var(--whitestudioteam-bg);
-  color: var(--whitestudioteam-text);
+  background-color: #000000;
+  color: #00ff00;
   font-family: 'Courier New', monospace;
   display: flex;
   justify-content: space-between;
@@ -76,7 +50,7 @@ img {
 
 /* Site title link */
 .wp-block-site-title a {
-  color: var(--whitestudioteam-text);
+  color: #00ff00;
   font-weight: bold;
   text-decoration: none;
   font-size: 1.25rem;
@@ -89,9 +63,9 @@ img {
 
 /* Search input field */
 .wp-block-search__input {
-  background-color: var(--whitestudioteam-bg);
+  background-color: #000000;
   border: 1px solid #444;
-  color: var(--whitestudioteam-text);
+  color: #00ff00;
   padding: 0.4rem 0.6rem;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
@@ -99,14 +73,14 @@ img {
 }
 .wp-block-search__input:focus {
   outline: none;
-  border-color: var(--whitestudioteam-text);
-  box-shadow: 0 0 5px var(--whitestudioteam-text);
+  border-color: #00ff00;
+  box-shadow: 0 0 5px #00ff00;
 }
 
 /* Search button */
 .wp-block-search__button {
-  background-color: var(--whitestudioteam-bg);
-  color: var(--whitestudioteam-text);
+  background-color: #000000;
+  color: #00ff00;
   border: 1px solid #444;
   padding: 0.4rem 0.8rem;
   font-family: 'Courier New', monospace;
@@ -115,9 +89,9 @@ img {
   transition: all 0.2s ease-in-out;
 }
 .wp-block-search__button:hover {
-  background-color: var(--whitestudioteam-text);
-  color: var(--whitestudioteam-bg);
-  border-color: var(--whitestudioteam-text);
+  background-color: #00ff00;
+  color: #000000;
+  border-color: #00ff00;
 }
 
 /* Responsive: Stack on small screens */
@@ -144,48 +118,9 @@ img {
 /* ========== Terminal Theme Colors ========== */
 
 body {
-  background-color: var(--whitestudioteam-bg);
+  background-color: #000000;
   color: #cccccc;
   font-family: 'Courier New', monospace;
-}
-
-/* Shared terminal section */
-.whitestudioteam-terminal {
-  background-color: var(--whitestudioteam-bg);
-  color: var(--whitestudioteam-text);
-  font-family: 'Courier New', monospace;
-  padding: 2rem;
-}
-
-.whitestudioteam-input-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.whitestudioteam-command-builder {
-  border: 1px solid var(--whitestudioteam-text);
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.whitestudioteam-command-builder input,
-.whitestudioteam-command-builder textarea {
-  width: 100%;
-  background: var(--whitestudioteam-bg);
-  color: var(--whitestudioteam-text);
-  border: 1px solid var(--whitestudioteam-text);
-}
-
-.whitestudioteam-command-builder button {
-  background: var(--whitestudioteam-bg);
-  color: var(--whitestudioteam-text);
-  border: 1px solid var(--whitestudioteam-text);
-  padding: 0.5rem;
-}
-
-.whitestudioteam-footer {
-  padding: 1rem;
-  text-align: center;
 }
 
 /* Terminal container */
@@ -197,7 +132,7 @@ body {
 
 /* Prompt */
 .terminal-prompt {
-  color: var(--whitestudioteam-text);
+  color: #00ff00;
   font-weight: bold;
 }
 
@@ -222,9 +157,9 @@ body {
 
 /* Input field styling */
 #terminal-input {
-  background-color: var(--whitestudioteam-bg);
+  background-color: #000000;
   border: none;
-  color: var(--whitestudioteam-text);
+  color: #aaaaaa;
   font-family: 'Courier New', monospace;
   width: 90%;
   outline: none;
@@ -237,7 +172,7 @@ body {
 
 /* Link styling */
 a {
-  color: var(--whitestudioteam-text);
+  color: #f5c542;
   text-decoration: none;
 }
 a:hover {

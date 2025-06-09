@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const output = document.getElementById("terminal-output");
   const pagesMap = {};
 
-  async function whitestudioteam_fetchPages() {
+  async function fetchPages() {
     try {
       const response = await fetch(currentUrl + '/wp-json/wp/v2/pages?per_page=100');
       const pages = await response.json();
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let blogPage = 1;
   let blogTotalPages = 1;
 
-  async function whitestudioteam_fetchPosts(page = 1) {
+  async function fetchPosts(page = 1) {
     try {
       const response = await fetch(`/wp-json/wp/v2/posts?per_page=5&page=${page}`);
       if (!response.ok) throw new Error("Network response was not ok");
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let portfolioPage = 1;
   let portfolioTotalPages = 1;
 
-  async function whitestudioteam_fetchPortfolio(page = 1) {
+  async function fetchPortfolio(page = 1) {
     try {
       const response = await fetch(`/wp-json/wp/v2/portfolio?per_page=5&page=${page}`);
       const items = await response.json();
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  async function whitestudioteam_fetchCategories() {
+  async function fetchCategories() {
     try {
       const response = await fetch(currentUrl + '/wp-json/wp/v2/categories');
       const cats = await response.json();
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🔄 Loading Animation
   let loadingInterval;
-  function whitestudioteam_showLoading() {
+  function showLoading() {
     const loadingFrames = [".", ". .", ". . .", ". .", "."];
     let index = 0;
     const loadingSpan = document.createElement("span");
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   }
 
-  function whitestudioteam_hideLoading() {
+  function hideLoading() {
     clearInterval(loadingInterval);
     const loadingSpan = document.getElementById("loading");
     if (loadingSpan) loadingSpan.remove();
@@ -125,44 +125,44 @@ document.addEventListener("DOMContentLoaded", () => {
       const normalizedCommand = command.replace(/\s+/g, '-');
       let response = "";
 
-      whitestudioteam_showLoading();
+      showLoading();
 
       try {
         if (normalizedCommand === "help") {
-          const pagesList = await whitestudioteam_fetchPages();
+          const pagesList = await fetchPages();
           response = `Available commands:<br> - help<br> - clear<br> - blog<br> - portfolio<br> - categories<br>${pagesList}`;
         } else if (normalizedCommand === "clear") {
           output.innerHTML = "";
           input.value = "";
-          whitestudioteam_hideLoading();
+          hideLoading();
           return;
         } else if (normalizedCommand === "blog") {
-          response = await whitestudioteam_fetchPosts(1);
+          response = await fetchPosts(1);
         } else if (normalizedCommand === "blog-next") {
           const nextPage = blogPage + 1;
           if (nextPage <= blogTotalPages) {
-            response = await whitestudioteam_fetchPosts(nextPage);
+            response = await fetchPosts(nextPage);
           } else {
             response = "You're already on the last page.";
           }
         } else if (normalizedCommand === "blog-prev") {
           const prevPage = blogPage - 1;
           if (prevPage >= 1) {
-            response = await whitestudioteam_fetchPosts(prevPage);
+            response = await fetchPosts(prevPage);
           } else {
             response = "You're already on the first page.";
           }
         } else if (normalizedCommand.startsWith("blog-page-")) {
           const pageNum = parseInt(normalizedCommand.replace("blog-page-", ""));
           if (!isNaN(pageNum)) {
-            response = await whitestudioteam_fetchPosts(pageNum);
+            response = await fetchPosts(pageNum);
           } else {
             response = "Invalid blog page number.";
           }
         } else if (normalizedCommand === "portfolio") {
-          response = await whitestudioteam_fetchPortfolio(1);
+          response = await fetchPortfolio(1);
         } else if (normalizedCommand === "categories") {
-          response = await whitestudioteam_fetchCategories();
+          response = await fetchCategories();
         } else if (pagesMap[normalizedCommand]) {
           let pageHtml = "";
           try {
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         response = "Error: " + err.message;
       }
 
-      whitestudioteam_hideLoading();
+      hideLoading();
 
       const fullResponse = `<br><strong>user@terminal:</strong>~$ ${commandRaw}<br>${response}`;
       const tempDiv = document.createElement("div");
@@ -225,17 +225,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  whitestudioteam_fetchPages();
-
-  const yearSpan = document.getElementById("whitestudioteam-year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
-
-  const saveBtn = document.getElementById("whitestudioteam-save-command");
-  if (saveBtn) {
-    saveBtn.addEventListener("click", () => {
-      alert('This form is a mockup — connect it to backend/plugin for saving.');
-    });
-  }
+  fetchPages();
 });

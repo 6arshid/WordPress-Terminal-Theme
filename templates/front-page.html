@@ -1,14 +1,14 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group test-front-page" style="background-color:#000000;color:#00ff00;font-family:'Courier New',monospace;padding:2rem;">
+<div class="wp-block-group test-front-page terminal-section">
   <p><strong>user@terminal:</strong>~$ Type <code>help</code> to list available commands</p>
 
-  <div class="terminal-output" id="terminal-output" style="white-space: pre-wrap;"></div>
+  <div class="terminal-output" id="terminal-output"></div>
 
- <p style="display:flex;align-items:center;">
+ <p class="terminal-input-container">
   <strong>user@terminal:</strong>~$
-  <input id="terminal-input" type="text" autocomplete="off" style="background:none;border:none;color:#00ff00;width:90%; margin:0px 5px" placeholder="Type command..." />
+  <input id="terminal-input" type="text" autocomplete="off" placeholder="Type command..." />
 </p>
 </div>
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

@@ -1,5 +1,5 @@
 <!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="font-family:'Courier New',monospace;color:#00ff00;">
+<div class="wp-block-group command-builder terminal-section">
   <!-- wp:heading -->
   <h2>Command Builder</h2>
   <!-- /wp:heading -->
@@ -9,10 +9,10 @@
   <!-- /wp:paragraph -->
 
   <!-- wp:html -->
-  <div style="border:1px solid #00ff00;padding:1rem;margin-top:1rem;">
-    <label>Command Name:<br><input type="text" id="cmd-name" style="width:100%; background:black; color:#00ff00; border:1px solid #00ff00;" /></label><br><br>
-    <label>Command Response (HTML/Text):<br><textarea id="cmd-response" style="width:100%;height:100px;background:black;color:#00ff00;border:1px solid #00ff00;"></textarea></label><br><br>
-    <button onclick="alert('This form is a mockup — connect it to backend/plugin for saving.')" style="background:black;color:#00ff00;border:1px solid #00ff00;padding:0.5rem;">Save Command</button>
+  <div class="command-builder-panel">
+    <label>Command Name:<br><input type="text" id="cmd-name" class="command-builder-input" /></label><br><br>
+    <label>Command Response (HTML/Text):<br><textarea id="cmd-response" class="command-builder-textarea"></textarea></label><br><br>
+    <button id="save-command" class="command-builder-button">Save Command</button>
   </div>
   <!-- /wp:html -->
 </div>

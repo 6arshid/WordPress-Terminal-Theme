@@ -20,9 +20,9 @@ Tags: full-site-editing, block-theme, dark-mode, green-text, terminal
 .comment-content,
 .comment-author {
   font-family: 'Courier New', monospace;
-  background: #000;
-  color: #00ff00;
-  border: 1px solid #00ff00;
+  background: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
+  border: 1px solid var(--wp--style--color--text);
   padding: 1rem;
   margin-top: 1rem;
 }
@@ -37,8 +37,8 @@ img {
    ================================ */
 
 .terminal-header {
-  background-color: #000000;
-  color: #00ff00;
+  background-color: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
   font-family: 'Courier New', monospace;
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@ img {
 
 /* Site title link */
 .wp-block-site-title a {
-  color: #00ff00;
+  color: var(--wp--style--color--text);
   font-weight: bold;
   text-decoration: none;
   font-size: 1.25rem;
@@ -63,9 +63,9 @@ img {
 
 /* Search input field */
 .wp-block-search__input {
-  background-color: #000000;
+  background-color: var(--wp--style--color--background);
   border: 1px solid #444;
-  color: #00ff00;
+  color: var(--wp--style--color--text);
   padding: 0.4rem 0.6rem;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
@@ -73,14 +73,14 @@ img {
 }
 .wp-block-search__input:focus {
   outline: none;
-  border-color: #00ff00;
-  box-shadow: 0 0 5px #00ff00;
+  border-color: var(--wp--style--color--text);
+  box-shadow: 0 0 5px var(--wp--style--color--text);
 }
 
 /* Search button */
 .wp-block-search__button {
-  background-color: #000000;
-  color: #00ff00;
+  background-color: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
   border: 1px solid #444;
   padding: 0.4rem 0.8rem;
   font-family: 'Courier New', monospace;
@@ -89,9 +89,9 @@ img {
   transition: all 0.2s ease-in-out;
 }
 .wp-block-search__button:hover {
-  background-color: #00ff00;
-  color: #000000;
-  border-color: #00ff00;
+  background-color: var(--wp--style--color--text);
+  color: var(--wp--style--color--background);
+  border-color: var(--wp--style--color--text);
 }
 
 /* Responsive: Stack on small screens */
@@ -118,8 +118,8 @@ img {
 /* ========== Terminal Theme Colors ========== */
 
 body {
-  background-color: #000000;
-  color: #cccccc;
+  background-color: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
   font-family: 'Courier New', monospace;
 }
 
@@ -127,39 +127,39 @@ body {
 .terminal-output {
   white-space: pre-wrap;
   font-family: 'Courier New', monospace;
-  color: #ccc;
+  color: var(--wp--style--color--text);
 }
 
 /* Prompt */
 .terminal-prompt {
-  color: #00ff00;
+  color: var(--wp--style--color--text);
   font-weight: bold;
 }
 
 /* User input commands like 'help' */
 .terminal-command {
-  color: #f5c542;
+  color: var(--wp--style--color--link);
   font-weight: bold;
 }
 
 /* Output titles like 'Available commands:' */
 .terminal-title {
-  color: #ffffff;
+  color: var(--wp--style--color--link);
   font-weight: bold;
   margin-top: 1rem;
 }
 
 /* Command list items */
 .terminal-list {
-  color: #f5c542;
+  color: var(--wp--style--color--link);
   margin-left: 1rem;
 }
 
 /* Input field styling */
 #terminal-input {
-  background-color: #000000;
+  background-color: var(--wp--style--color--background);
   border: none;
-  color: #aaaaaa;
+  color: var(--wp--style--color--text);
   font-family: 'Courier New', monospace;
   width: 90%;
   outline: none;
@@ -167,15 +167,81 @@ body {
 
 /* Placeholder text */
 #terminal-input::placeholder {
-  color: #555;
+  color: var(--wp--style--color--text);
 }
 
 /* Link styling */
 a {
-  color: #f5c542;
+  color: var(--wp--style--color--link);
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
-  color: #fff176;
+  color: var(--wp--style--color--link);
 }
+/* Generic terminal section */
+.terminal-section {
+  font-family: 'Courier New', monospace;
+  padding: 2rem;
+}
+
+/* Command builder styles */
+.command-builder-panel {
+  border: 1px solid var(--wp--style--color--text);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.command-builder-input,
+.command-builder-textarea {
+  width: 100%;
+  background: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
+  border: 1px solid var(--wp--style--color--text);
+}
+
+.command-builder-textarea {
+  height: 100px;
+}
+
+.command-builder-button {
+  background: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
+  border: 1px solid var(--wp--style--color--text);
+  padding: 0.5rem;
+}
+
+.terminal-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-item {
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.terminal-footer {
+  padding: 1rem;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+.footer-link {
+  text-decoration: underline;
+}
+
+.page-gallery img {
+  filter: grayscale(100%) contrast(120%);
+  transition: all 0.3s ease;
+}
+
+.page-gallery img:hover {
+  filter: none;
+  box-shadow: 0 0 10px var(--wp--style--color--text);
+}
+
+.wp-block-comments {
+  margin-top: 3rem;
+}
+

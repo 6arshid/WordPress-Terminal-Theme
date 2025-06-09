@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let historyIndex = -1;
   const input = document.getElementById("terminal-input");
   const output = document.getElementById("terminal-output");
+  const saveButton = document.getElementById("save-command");
+  const yearSpan = document.getElementById("current-year");
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  saveButton?.addEventListener("click", () => {
+    alert('This form is a mockup — connect it to backend/plugin for saving.');
+  });
   const pagesMap = {};
 
   async function fetchPages() {
@@ -56,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const pfTitle = p.title?.rendered || "";
         const pfLink = p.link || "#";
         const pfDescription = p.excerpt?.rendered || "";
-        return `<div style='margin-bottom:1rem;'>
+        return `<div class="portfolio-item">
           <a href="${pfLink}" target="_blank"><strong>${pfTitle}</strong></a><br>${pfDescription}
         </div>`;
       }).join("<br>") +
@@ -227,3 +233,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchPages();
 });
+

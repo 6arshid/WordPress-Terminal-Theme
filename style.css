@@ -37,8 +37,8 @@ img {
    ================================ */
 
 .terminal-header {
-  background-color: #000000;
-  color: #00ff00;
+  background-color: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
   font-family: 'Courier New', monospace;
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@ img {
 
 /* Site title link */
 .wp-block-site-title a {
-  color: #00ff00;
+  color: var(--wp--style--color--text);
   font-weight: bold;
   text-decoration: none;
   font-size: 1.25rem;
@@ -63,9 +63,9 @@ img {
 
 /* Search input field */
 .wp-block-search__input {
-  background-color: #000000;
+  background-color: var(--wp--style--color--background);
   border: 1px solid #444;
-  color: #00ff00;
+  color: var(--wp--style--color--text);
   padding: 0.4rem 0.6rem;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
@@ -73,14 +73,14 @@ img {
 }
 .wp-block-search__input:focus {
   outline: none;
-  border-color: #00ff00;
-  box-shadow: 0 0 5px #00ff00;
+  border-color: var(--wp--style--color--text);
+  box-shadow: 0 0 5px var(--wp--style--color--text);
 }
 
 /* Search button */
 .wp-block-search__button {
-  background-color: #000000;
-  color: #00ff00;
+  background-color: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
   border: 1px solid #444;
   padding: 0.4rem 0.8rem;
   font-family: 'Courier New', monospace;
@@ -89,9 +89,9 @@ img {
   transition: all 0.2s ease-in-out;
 }
 .wp-block-search__button:hover {
-  background-color: #00ff00;
-  color: #000000;
-  border-color: #00ff00;
+  background-color: var(--wp--style--color--text);
+  color: var(--wp--style--color--background);
+  border-color: var(--wp--style--color--text);
 }
 
 /* Responsive: Stack on small screens */
@@ -118,8 +118,8 @@ img {
 /* ========== Terminal Theme Colors ========== */
 
 body {
-  background-color: #000000;
-  color: #cccccc;
+  background-color: var(--wp--style--color--background);
+  color: var(--wp--style--color--text);
   font-family: 'Courier New', monospace;
 }
 
@@ -132,7 +132,7 @@ body {
 
 /* Prompt */
 .terminal-prompt {
-  color: #00ff00;
+  color: var(--wp--style--color--text);
   font-weight: bold;
 }
 
@@ -157,7 +157,7 @@ body {
 
 /* Input field styling */
 #terminal-input {
-  background-color: #000000;
+  background-color: var(--wp--style--color--background);
   border: none;
   color: #aaaaaa;
   font-family: 'Courier New', monospace;

@@ -14,9 +14,12 @@
           "name": "Terminal Green"
         }
       ],
-      "defaultPalette": false,
-      "custom": false
+      "defaultPalette": true,
+      "custom": true,
+      "customGradient": true,
+      "customDuotone": true
     },
+    "appearanceTools": true,
     "typography": {
       "fontFamilies": [
         {
